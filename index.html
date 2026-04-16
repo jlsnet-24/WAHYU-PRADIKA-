@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f3ecff, #dcccff);
+    overflow: hidden;
+}
+
+/* OPENING */
+.opening {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #2e1a47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.opening h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+}
+
+.opening button {
+    margin-top: 20px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background: #b999ff;
+    color: white;
+    cursor: pointer;
+}
+
+/* MAIN */
+.main {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    width: 340px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #5a2ea6;
+}
+
+.sub {
+    font-size: 14px;
+    color: #777;
+}
+
+/* FOTO AUTO RAPI */
+.photo {
+    width: 160px;
+    height: 160px;
+    margin: 15px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 4px solid #e6dbff;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* NAME */
+.name {
+    font-weight: bold;
+    color: #6a3cc9;
+}
+
+/* MESSAGE */
+.message {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+/* FROM */
+.from {
+    margin-top: 18px;
+    font-size: 12px;
+}
+
+/* FLOWER */
+.flower {
+    position: absolute;
+    top: -50px;
+    font-size: 18px;
+    color: #caaaff;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<div class="opening" id="open">
+    <h1>For Someone Special 💜</h1>
+    <button onclick="start()">Buka</button>
+</div>
+
+<!-- MAIN -->
+<div class="main" id="main">
+    <div class="card">
+
+        <div class="title">Happy Semprotulation</div>
+        <div class="sub">my favorite person 💜</div>
+
+        <div class="photo">
+            <!-- FOTO DARI LINK -->
+            <img src="https://i.ibb.co/HfMmR3Fx/image.jpg" alt="foto">
+        </div>
+
+        <div class="name">WAHYU PRADIKA</div>
+
+        <div class="message">
+            Hari ini bukan sekadar tentang pencapaian,<br><br>
+            tapi tentang perjalanan luar biasa yang akhirnya menemukan titik terangnya.<br><br>
+            Kamu hebat, kamu kuat, dan kamu layak untuk semua ini ✨
+        </div>
+
+        <div class="from">
+            Dari: <b>Nama Kamu</b>
+        </div>
+
+    </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="bgm" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function start() {
+    document.getElementById("open").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+
+    let music = document.getElementById("bgm");
+    music.volume = 0.5;
+
+    music.play().catch(() => {
+        document.body.onclick = function() {
+            music.play();
+        }
+    });
+}
+
+/* bunga jatuh */
+for (let i = 0; i < 20; i++) {
+    let f = document.createElement("div");
+    f.className = "flower";
+    f.innerHTML = "❀";
+    f.style.left = Math.random()*100 + "vw";
+    f.style.animationDuration = (5 + Math.random()*5) + "s";
+    document.body.appendChild(f);
+}
+</script>
+
+</body>
+</html>
